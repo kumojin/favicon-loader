@@ -8,21 +8,20 @@ export class FaviconLoader {
    * @param {string} siteUrl
    */
   public static getFavicon(siteUrl: string): Promise<string> {
-    const imageUrl = `https://www.google.com/s2/favicons?sz=128&domain=${siteUrl}`
+    const imageUrl: string = `https://www.google.com/s2/favicons?sz=128&domain=${siteUrl}`;
 
-    return new Promise((resolve, reject) => {
-      return FaviconLoader._toDataURL(
-        imageUrl,
-        (dataUrl: string): string => {
-          if (FaviconLoader._hashCode(dataUrl) !== GOOGLE_NOT_FOUND_FAVICON_DATA_URLHASH) {
-            resolve(imageUrl);
+    return new Promise<string>((resolve, reject) => this._toDataURL(
+      imageUrl,
+      (dataUrl: string): string => {
+        if (this._hashCode(dataUrl) !== GOOGLE_NOT_FOUND_FAVICON_DATA_URLHASH) {
+          resolve(imageUrl);
 
-            return imageUrl;
-          }
+          return imageUrl;
+        }
 
-          reject(new Error('Image is standard google favicon image'));
-        });
-    });
+        reject(new Error('Image is standard google favicon image'));
+      },
+    ));
   };
 
   /**
@@ -34,8 +33,8 @@ export class FaviconLoader {
    * @param {(dataUrl: string) => string} callback
    * @param {string} outputFormat
    */
-  private static _toDataURL(src: string, callback: (dataUrl: string) => string, outputFormat: string = null) {
-    const img = new Image();
+  private static _toDataURL(src: string, callback: (dataUrl: string) => string, outputFormat: string = null): void {
+    const img: HTMLImageElement = new Image();
 
     img.crossOrigin = 'Anonymous';
     img.onload = function() {
@@ -48,8 +47,9 @@ export class FaviconLoader {
 
       ctx.drawImage((this as HTMLCanvasElement), 0, 0);
       dataURL = canvas.toDataURL(outputFormat);
-      callback(dataURL);
-    }
+
+      return callback(dataURL);
+    };
 
     img.src = src;
 
