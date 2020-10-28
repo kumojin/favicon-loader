@@ -13,7 +13,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "build": "babel src --out-file dist/favicon-loader.js",
+    "build": "babel src/main.ts --out-file dist/favicon-loader.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
