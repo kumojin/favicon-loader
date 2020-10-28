@@ -1,0 +1,17 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Install dependencies
+        run: yarn
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
