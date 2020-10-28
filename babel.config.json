@@ -14,6 +14,9 @@
     ],
     "plugins": [
         "@babel/plugin-transform-arrow-functions"
+    ],
+    "ignore": [
+      "**/*.spec.js"
     ]
   }
   
