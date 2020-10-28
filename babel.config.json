@@ -1,7 +1,8 @@
 {
   "presets": [
     ["@babel/preset-env", { "targets": { "esmodules": true } }],
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    ["minify", { "keepFnName": true }]
   ],
   "plugins": [
     "@babel/plugin-transform-arrow-functions"

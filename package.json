@@ -13,7 +13,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "build": "babel src/main.ts --out-file dist/favicon-loader.js",
+    "build": "babel src --out-file dist/favicon-loader.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -29,6 +29,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^26.6.1",
     "babel-plugin-transform-require-context": "^0.1.1",
+    "babel-preset-minify": "^0.5.1",
     "eslint": "^7.12.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
