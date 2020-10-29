@@ -1,6 +1,8 @@
 {
   "name": "favicon-loader",
   "description": "Used to load the favicon of a website, using Google S2 service",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "Solutions Kumojin Inc.",
     "email": "contact@kumojin.com"
@@ -13,14 +15,16 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "build": "babel src/main.js --out-file dist/favicon-loader.js",
+    "types": "tsc",
+    "build": "babel src/main.ts --out-file dist/favicon-loader.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "check:build": "yarn types && yarn test && yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
-    "@babel/plugin-transform-arrow-functions": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@types/jest": "^26.0.15",
@@ -28,7 +32,7 @@
     "@typescript-eslint/parser": "^4.5.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^26.6.1",
-    "babel-plugin-transform-require-context": "^0.1.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "babel-preset-minify": "^0.5.1",
     "eslint": "^7.12.0",
     "eslint-plugin-import": "^2.22.1",

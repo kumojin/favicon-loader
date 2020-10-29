@@ -1,0 +1,1 @@
+export { FaviconLoader } from './main';

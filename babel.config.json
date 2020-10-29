@@ -1,10 +1,21 @@
 {
   "presets": [
-    ["@babel/preset-env", { "targets": { "esmodules": true } }],
+    ["@babel/preset-env", { "modules": false } ],
     "@babel/preset-typescript",
     ["minify", { "keepFnName": true }]
   ],
   "plugins": [
-    "@babel/plugin-transform-arrow-functions"
-  ]
+    "add-module-exports",
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-env",{ "targets": { "esmodules": true } } ],
+        "@babel/preset-typescript",
+        ["minify", false]
+      ],
+      "plugins": []
+    }
+  }
 }
