@@ -2,15 +2,19 @@
   <head>
     <title>Favicon Loader Example</title>
     <script type="module">
-      import { FaviconLoader } from '../dist/favicon-loader.js';
+      import { FaviconLoader } from './favicon-loader.js';
 
-      FaviconLoader.getFavicon('https://kumojin.com/');
+      FaviconLoader.getFavicon('https://kumojin.com/').then(icon => {
+        const img = document.createElement('img'); 
+        img.src = icon 
+        document.getElementsByTagName('body')[0].appendChild(img); 
+      });
     </script>
   </head>
   <body>
     <h1>Favicon loader example</h1>
     <p>
-      This example loads a favicon from <a href="https://kumojin.com/">https://kumojin.com/</a>.
+      This example loads a favicon from <a href="https://kumojin.com/">https://kumojin.com/</a>.    
     </p>
   </body>
 </html>
