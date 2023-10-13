@@ -59,5 +59,26 @@ describe('FaviconLoader', () => {
         expect(error.message).toEqual('Image is standard google favicon image');
       });
     });
+    
+    describe('with a custom size', () => {
+      let icon;
+      let error;
+
+      beforeEach(async () => {
+        // simulate found
+        jest.spyOn(FaviconLoader as any, '_hashCode').mockReturnValue(42);
+
+        try {
+          icon = await FaviconLoader.getFavicon('https://www.google.com/', 42);
+        } catch (e) {
+          error = e;
+        }
+      });
+
+      it('should run with the size parameter', () => {
+        expect(icon).toEqual('https://www.google.com/s2/favicons?sz=42&domain=https://www.google.com/');
+        expect(error).toBeUndefined();
+      });
+    });
   });
 });

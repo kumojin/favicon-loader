@@ -5,10 +5,11 @@ export class FaviconLoader {
    * Returns the favicon of the site with "siteUrl" if
    * it can be found.
    *
-   * @param {string} siteUrl
+   * @param {string} siteUrl - website url to find the favicon
+   * @param {number} [size=128] - size of favicon, default value 128
    */
-  public static getFavicon(siteUrl: string): Promise<string> {
-    const imageUrl: string = `https://www.google.com/s2/favicons?sz=128&domain=${siteUrl}`;
+  public static getFavicon(siteUrl: string, size: number = 128): Promise<string> {
+    const imageUrl: string = `https://www.google.com/s2/favicons?sz=${size}&domain=${siteUrl}`;
 
     return new Promise<string>((resolve, reject) => this._toDataURL(
       imageUrl,
