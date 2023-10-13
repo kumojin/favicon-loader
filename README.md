@@ -24,3 +24,10 @@ FaviconLoader.getFavicon('https://yahoo.com/').then(icon => {
     img.src = icon 
     document.getElementsByTagName('body')[0].appendChild(img); 
 });
+
+// Example: we can specify a specific icon size
+FaviconLoader.getFavicon('https://yahoo.com/', 32).then(icon => {
+    const img = document.createElement('img'); 
+    img.src = icon 
+    document.getElementsByTagName('body')[0].appendChild(img); 
+});
