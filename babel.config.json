@@ -11,7 +11,7 @@
   "env": {
     "test": {
       "presets": [
-        ["@babel/preset-env",{ "targets": { "esmodules": true } } ],
+        ["@babel/preset-env", { "targets": { "esmodules": true } } ],
         "@babel/preset-typescript",
         ["minify", false]
       ],
