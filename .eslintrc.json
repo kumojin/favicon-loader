@@ -2,7 +2,6 @@
   "root": true,
   "extends": [
     "eslint:recommended",
-    "plugin:import/recommended",
     "plugin:promise/recommended",
     "plugin:@typescript-eslint/strict",
     "plugin:@typescript-eslint/stylistic"
@@ -170,11 +169,6 @@
       "warn",
       "always"
     ],
-    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
-    "import/named": "error",
-    "import/namespace": "error",
-    "import/default": "error",
-    "import/export": "error",
     "no-console": [
       "error",
       {
@@ -190,5 +184,15 @@
     "no-var": "error",
     "object-shorthand": "warn"
   },
-  "ignorePatterns": ["dist", "node_modules"]
+  "overrides": [
+    {
+      "files": [
+        "*.spec.ts",
+        "*.spec.js"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }
