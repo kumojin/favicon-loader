@@ -2,20 +2,20 @@ import { FaviconLoader } from './main';
 
 jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => ({
   drawImage: jest.fn(),
-}) as any);
+}) as never);
 
 jest.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockImplementation((outputFormat: string) => `output value: ${outputFormat}`);
 
 describe('FaviconLoader', () => {
   describe('getFavicon', () => {
-    // @ts-ignore
+    // @ts-expect-error override Image value in global [for unit tests only]
     global.Image = class {
       constructor() {
         setTimeout(() => {
-          // @ts-ignore
+          // @ts-expect-error onload is defined but typescript does not trust me [for unit tests only]
           this.onload();
         }, 100);
-      };
+      }
     };
 
     describe('when the load is successful', () => {
@@ -54,12 +54,12 @@ describe('FaviconLoader', () => {
         }
       });
 
-      it('should reject with error', async() => {
+      it('should reject with error', async () => {
         expect(icon).toBeUndefined();
         expect(error.message).toEqual('Image is standard google favicon image');
       });
     });
-    
+
     describe('with a custom size', () => {
       let icon;
       let error;
