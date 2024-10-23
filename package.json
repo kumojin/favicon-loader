@@ -30,7 +30,7 @@
     "@babel/preset-env": "7.25.9",
     "@babel/preset-typescript": "7.25.9",
     "@stylistic/eslint-plugin": "2.9.0",
-    "@types/jest": "29.5.13",
+    "@types/jest": "29.5.14",
     "@typescript-eslint/eslint-plugin": "8.11.0",
     "@typescript-eslint/parser": "8.11.0",
     "awesome-typescript-loader": "5.2.1",
