@@ -19,8 +19,8 @@ describe('FaviconLoader', () => {
     };
 
     describe('when the load is successful', () => {
-      let icon;
-      let error;
+      let icon: string;
+      let error: Error;
 
       beforeEach(async () => {
         // simulate found
@@ -29,7 +29,7 @@ describe('FaviconLoader', () => {
         try {
           icon = await FaviconLoader.getFavicon('https://www.google.com/');
         } catch (e) {
-          error = e;
+          error = e as Error;
         }
       });
 
@@ -40,8 +40,8 @@ describe('FaviconLoader', () => {
     });
 
     describe('when the load is failure', () => {
-      let icon;
-      let error;
+      let icon: string;
+      let error: Error;
 
       beforeEach(async () => {
         // simulate not found
@@ -50,7 +50,7 @@ describe('FaviconLoader', () => {
         try {
           icon = await FaviconLoader.getFavicon('https://www.google.com/');
         } catch (e) {
-          error = e;
+          error = e as Error;
         }
       });
 
@@ -61,8 +61,8 @@ describe('FaviconLoader', () => {
     });
 
     describe('with a custom size', () => {
-      let icon;
-      let error;
+      let icon: string;
+      let error: Error;
 
       beforeEach(async () => {
         // simulate found
@@ -71,7 +71,7 @@ describe('FaviconLoader', () => {
         try {
           icon = await FaviconLoader.getFavicon('https://www.google.com/', 42);
         } catch (e) {
-          error = e;
+          error = e as Error;
         }
       });
 
