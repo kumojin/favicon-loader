@@ -20,8 +20,9 @@
     "build": "babel src/main.ts --out-file dist/favicon-loader.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "eslint": "eslint .",
-    "check:build": "yarn types && yarn eslint && yarn test && yarn build"
+    "lint": "biome check --write",
+    "lint:check": "biome check",
+    "check:build": "yarn types && yarn lint:check && yarn test && yarn build"
   },
   "devDependencies": {
     "@babel/cli": "7.28.3",
@@ -29,6 +30,7 @@
     "@babel/plugin-proposal-class-properties": "7.18.6",
     "@babel/preset-env": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
+    "@biomejs/biome": "2.2.5",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.38.0",
     "@stylistic/eslint-plugin": "5.5.0",
