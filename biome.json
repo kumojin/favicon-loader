@@ -107,8 +107,7 @@
 			"!**/node_modules/",
 			"!**/dist/",
 			"!**/example/",
-			"!**/jest.config.js",
-			"!**/eslint.config.mjs"
+			"!**/jest.config.js"
 		]
 	},
 	"javascript": { "formatter": { "quoteStyle": "double" }, "globals": [] },
