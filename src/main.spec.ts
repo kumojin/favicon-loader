@@ -1,8 +1,11 @@
 import { FaviconLoader } from './main';
 
-jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => ({
-  drawImage: jest.fn(),
-}) as never);
+jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(
+  () =>
+    ({
+      drawImage: jest.fn(),
+    }) as never,
+);
 
 jest.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockImplementation((outputFormat: string) => `output value: ${outputFormat}`);
 
