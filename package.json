@@ -21,7 +21,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "biome check --write",
-    "lint:check": "biome check",
+    "lint:check": "biome ci",
     "check:build": "yarn types && yarn lint:check && yarn test && yarn build"
   },
   "devDependencies": {
