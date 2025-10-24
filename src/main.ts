@@ -12,18 +12,17 @@ export class FaviconLoader {
   public static getFavicon(siteUrl: string, size = 128): Promise<string> {
     const imageUrl = `https://www.google.com/s2/favicons?sz=${size}&domain=${siteUrl}`;
 
-    return new Promise<string>((resolve, reject) => this._toDataURL(
-      imageUrl,
-      (dataUrl: string): string => {
-        if (this._hashCode(dataUrl) !== GOOGLE_NOT_FOUND_FAVICON_DATA_URLHASH) {
+    return new Promise<string>((resolve, reject) =>
+      FaviconLoader._toDataURL(imageUrl, (dataUrl: string): string => {
+        if (FaviconLoader._hashCode(dataUrl) !== GOOGLE_NOT_FOUND_FAVICON_DATA_URLHASH) {
           resolve(imageUrl);
 
           return imageUrl;
         }
 
         reject(new Error('Image is standard google favicon image'));
-      },
-    ));
+      }),
+    );
   }
 
   /**
@@ -39,14 +38,14 @@ export class FaviconLoader {
     const img: HTMLImageElement = new Image();
 
     img.crossOrigin = 'Anonymous';
-    img.onload = function(): string {
+    img.onload = function (): string {
       const canvas: HTMLCanvasElement = document.createElement('CANVAS') as HTMLCanvasElement;
       const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
 
       canvas.height = (this as HTMLImageElement).naturalHeight;
       canvas.width = (this as HTMLImageElement).naturalWidth;
 
-      ctx.drawImage((this as HTMLCanvasElement), 0, 0);
+      ctx.drawImage(this as HTMLCanvasElement, 0, 0);
       const dataURL: string = canvas.toDataURL(outputFormat);
 
       return callback(dataURL);
@@ -64,7 +63,7 @@ export class FaviconLoader {
     let h = 0;
 
     for (let i = 0; i < s.length; i++) {
-      h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+      h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
     }
 
     return h;
