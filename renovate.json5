@@ -1,13 +1,7 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: [
-    "config:best-practices",
-    ":semanticCommitTypeAll(ci)",
-    "docker:enableMajor",
-    ":enableVulnerabilityAlertsWithLabel(security)",
-    ":maintainLockFilesWeekly",
-    ":automergeMinor",
-    ":automergeDigest"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>kumojin/renovate-config"
   ],
-  labels: ["dependencies"]
+  "enabled": false
 }
